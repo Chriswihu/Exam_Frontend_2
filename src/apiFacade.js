@@ -1,6 +1,8 @@
 
-const URL = "http://localhost:8080";
-const URLBookshelf = "http://localhost:8080/api/bookshelf/";
+const URL = "http://localhost:8080/dat3_exam";
+// const URL1 = "http://localhost:8080/dat3_exam/api/user";
+// const URL2 = "http://localhost:8080/dat3_exam";
+// const URL3 = "http://localhost:8080/dat3_exam";
 
 // Denne streng burde nok gemmes væk
 const GoogleURL = "https://www.googleapis.com/books/v1/volumes?q=:keyes&key=AIzaSyCZoXruFbr28UKR2Z6HXgtXqnpRA0shUTk"
@@ -38,7 +40,24 @@ function apiFacade() {
     const fetchDataGoogle = () => {
         const options = makeOptions("GET");
        return fetch(GoogleURL, options).then(handleHttpErrors);
-      }
+    }
+
+    const fetchUser = () => {
+        const options = makeOptions("GET", true);
+        return fetch(URL + "/api/user").then(handleHttpErrors);
+    }
+
+    const fetchRentals = () => {
+        const options = makeOptions("GET", true);
+        return fetch(URL + "/api/rental").then(handleHttpErrors);
+    }
+
+
+
+    const fetchHouse = (house_id) => {
+        const options = makeOptions("GET", true);
+        return fetch(URL + "/house/" + house_id, options).then(handleHttpErrors);
+    }
 
     const makeOptions = (method, addToken, body) => {
         var opts = {
@@ -56,15 +75,6 @@ function apiFacade() {
         }
         return opts;
     }
-
-    // const addReview = (review) => {
-    //     const options = makeOptions("POST", true, review);
-    //     return fetch(URL + "/api/review", options)
-    //         .then(handleHttpErrors)
-    //         .then(res => {
-    //             console.log(res);
-    //         })
-    // }
     const setToken = (token) => {
         localStorage.setItem('jwtToken', token)
     }
@@ -112,6 +122,9 @@ function apiFacade() {
         logout,
         fetchData,
         fetchDataGoogle,
+        fetchUser,
+        fetchRentals,
+        fetchHouse,
         readJwtToken,
         fetchBookshelfData,
 
