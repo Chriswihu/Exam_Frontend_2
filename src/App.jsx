@@ -12,6 +12,8 @@ import Contact from "./components/contact/Contact.jsx";
 import Registration from "./components/registration/registration";
 import Bookshelf from "./components/bookshelf/Bookshelf.jsx";
 import Table_Example from "./components/Page_Example/Table_Example.jsx";
+import User from "./components/user/User.jsx";
+import Events from "./components/event/Events.jsx";
 
 
 function App() {
@@ -35,8 +37,10 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/contact" element={<Contact/>}/>
-                    <Route path="/library" element={<Library/>}/>
-                    <Route path="/table_example" element={<Table_Example/>}/>
+                    <Route path="/events" element={<Events/>}/>
+                    <Route path="/user" element={<User/>}/>
+                    <Route path="/admin" element={<Admin/>}/>
+                    {/*<Route path="/table_example" element={<Table_Example/>}/>*/}
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/login"
                            element={<LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user}

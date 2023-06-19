@@ -1,6 +1,4 @@
-
-const URL = "http://localhost:8080";
-const URLBookshelf = "http://localhost:8080/api/bookshelf/";
+const URL = "http://localhost:8080/dat3_exam";
 
 // Denne streng burde nok gemmes væk
 const GoogleURL = "https://www.googleapis.com/books/v1/volumes?q=:keyes&key=AIzaSyCZoXruFbr28UKR2Z6HXgtXqnpRA0shUTk"
@@ -29,16 +27,57 @@ function apiFacade() {
         const options = makeOptions("GET", true); //True add's the token
         return fetch(URL + ressource, options).then(handleHttpErrors);
     }
-    const fetchBookshelfData = (user_name) => {
-        const options = makeOptions("GET"); //True add's the token
-        console.log("URL: " + URLBookshelf + user_name);
-        return fetch(URLBookshelf + user_name, options).then(handleHttpErrors);
+    const fetchEvents = (ressource) => {
+        const options = makeOptions("GET", true); //True add's the token
+        return fetch(URL + "/api/event/all", options).then(handleHttpErrors);
     }
 
-    const fetchDataGoogle = () => {
+    const fetchUser = (user_name) => {
         const options = makeOptions("GET");
-       return fetch(GoogleURL, options).then(handleHttpErrors);
-      }
+        console.log(URL + "/api/user/" + user_name);
+        return fetch(URL + "/api/user/" + user_name, options).then(handleHttpErrors);
+    }
+
+    const fetchUserEvents = (username) => {
+        const options = makeOptions("GET");
+        console.log(URL + "/api/user/" + username);
+        return fetch(URL + "/api/user/" + username, options).then(handleHttpErrors);
+    }
+
+    const addEvent = (event) => {
+        const options = {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(event)
+        };
+        return fetch(URL + "/api/event", options).then(handleHttpErrors);
+    }
+
+    const updateEvent = (event) => {
+        const options = {
+            method: "PUT",
+            headers: {
+                Accept: "application/json",
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(event)
+        };
+        return fetch(URL + "/api/event/" + event.id, options).then(handleHttpErrors);
+    }
+
+    const deleteEvent = (id) => {
+        const options = {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-type": "application/json",
+            }
+        };
+        return fetch(URL + "/api/event/" + id, options).then(handleHttpErrors);
+    }
 
     const makeOptions = (method, addToken, body) => {
         var opts = {
@@ -93,8 +132,7 @@ function apiFacade() {
         return JSON.parse(jsonPayload);
     }
 
-    function review(bookshelfId, bookId, reviewScore, reviewText)
-    {
+    function review(bookshelfId, bookId, reviewScore, reviewText) {
         const options = makeOptions("POST", true, {bookshelfId, reviewScore, reviewText});
         return fetch(URL + "/api/review", options)
             .then(handleHttpErrors)
@@ -111,13 +149,15 @@ function apiFacade() {
         login,
         logout,
         fetchData,
-        fetchDataGoogle,
         readJwtToken,
-        fetchBookshelfData,
+        fetchEvents,
+        fetchUserEvents,
+        fetchUser,
+        addEvent,
+        updateEvent,
+        deleteEvent
 
-        review(bookshelfId, bookId, reviewScore, reviewText) {
 
-        }
     }
 }
 

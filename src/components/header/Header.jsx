@@ -49,12 +49,20 @@ const Header = ({loggedIn, setLoggedIn, user, setUser}) => {
                 {/*    && <a className="nav-item nav-link" href="/table_example">Table_Example</a>*/}
                 {/*}*/}
 
-                <a className="nav-item nav-link" href="/library">Library</a>
-                <a className="nav-item nav-link" href="/table_example">Table_Example</a>
+                {/*<a className="nav-item nav-link" href="/library">Library</a>*/}
+                {/*<a className="nav-item nav-link" href="/table_example">Table_Example</a>*/}
 
                 {/*Navbar link, der kun vises når man ikke er logget ind, som føre til Registration*/}
                 {!facade.loggedIn()
                     && <a className="nav-item nav-link" href="/registration">Sign-up</a>}
+
+                {facade.loggedIn()
+                    && <a className="nav-item nav-link" href="/events">Events</a>}
+
+                {facade.loggedIn() 
+                    && <a className="nav-item nav-link" href="/user">User</a>}
+
+
 
                 {/*Navbar link, der kun bliver vist for login, med rollen Admin*/}
                 {facade.loggedIn() && facade.readJwtToken(facade.getToken()).roles.includes("admin") &&
