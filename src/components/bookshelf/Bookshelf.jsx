@@ -57,16 +57,16 @@ const Bookshelf = () => {
                                 {/*<td>{item.category}</td>*/}
                                 <td>{item.description}</td>
                                 <td>
-                                    {/* der skal nok tilføjes en user hertil */}
+                                    {/* der skal nok tilføjes en userPage hertil */}
                                     <Button
-                                        //TODO Remove chosen book from the user's Database
+                                        //TODO Remove chosen book from the userPage's Database
                                         //onClick={() => addBook(item.volumeInfo.title, item.volumeInfo.authors, item.volumeInfo.description)}
                                         className="btn btn-danger">
                                         Delete Book
                                     </Button>
                                 </td>
                                 <td>
-                                    {/* der skal nok tilføjes en user hertil */}
+                                    {/* der skal nok tilføjes en userPage hertil */}
                                     <Button
                                         //TODO Method to send to review page
                                         //onClick={() => addReview(review_text, )}

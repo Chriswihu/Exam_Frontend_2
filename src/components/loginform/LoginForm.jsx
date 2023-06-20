@@ -15,7 +15,7 @@ function LogIn({ login, logout}) {
     return (
       <div className="login-container">
         <form onChange={onChange} >
-          <input type="text" placeholder="User Name" id="username" />
+          <input type="text" placeholder="UserPage Name" id="username" />
           <input type="text" placeholder="Password" id="password" />
           <button onClick={performLogin}>Login</button>
         </form>

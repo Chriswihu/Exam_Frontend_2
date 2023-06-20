@@ -34,14 +34,24 @@ function apiFacade() {
 
     const fetchUser = (user_name) => {
         const options = makeOptions("GET");
-        console.log(URL + "/api/user/" + user_name);
+        console.log(URL + "/api/userPage/" + user_name);
         return fetch(URL + "/api/user/" + user_name, options).then(handleHttpErrors);
     }
 
-    const fetchUserEvents = (username) => {
+    const fetchUserAssignments = (username) => {
         const options = makeOptions("GET");
-        console.log(URL + "/api/user/" + username);
-        return fetch(URL + "/api/user/" + username, options).then(handleHttpErrors);
+        // console.log(URL + "/api/userPage/" + username);
+        return fetch(URL + "/api/user/" + username, options).then(handleHttpErrors).then((res) => res);
+    }
+
+    // const getShowsByGuest = (guestname) => {
+    //     const options = makeOptions("GET", true);
+    //     return fetch(URL + `/api/show/${guestname}`, options).then(handleHttpErrors).then((res) => res);
+    // };
+
+    const fetchDataGoogle = () => {
+        const options = makeOptions("GET");
+        return fetch(GoogleURL, options).then(handleHttpErrors);
     }
 
     const addEvent = (event) => {
@@ -151,8 +161,9 @@ function apiFacade() {
         fetchData,
         readJwtToken,
         fetchEvents,
-        fetchUserEvents,
+        fetchUserAssignments,
         fetchUser,
+        fetchDataGoogle,
         addEvent,
         updateEvent,
         deleteEvent

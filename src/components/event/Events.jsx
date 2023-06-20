@@ -20,6 +20,9 @@ const Events = () => {
 
     return (
         <div>
+            <br></br>
+            <h1>Events fetched from Database</h1>
+            {/*<h3>{tableData}</h3>*/}
             {tableData.map((item) => {
                 return (
                     <>

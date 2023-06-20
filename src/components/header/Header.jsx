@@ -49,7 +49,7 @@ const Header = ({loggedIn, setLoggedIn, user, setUser}) => {
                 {/*    && <a className="nav-item nav-link" href="/table_example">Table_Example</a>*/}
                 {/*}*/}
 
-                {/*<a className="nav-item nav-link" href="/library">Library</a>*/}
+                <a className="nav-item nav-link" href="/library">Library</a>
                 {/*<a className="nav-item nav-link" href="/table_example">Table_Example</a>*/}
 
                 {/*Navbar link, der kun vises når man ikke er logget ind, som føre til Registration*/}
@@ -78,7 +78,7 @@ const Header = ({loggedIn, setLoggedIn, user, setUser}) => {
                                 <LoggedIn user={user}/>
                             </button>
                             {/*<Badge bg="primary" >*/}
-                            {/*    <LoggedIn user={user}/>*/}
+                            {/*    <LoggedIn userPage={userPage}/>*/}
                             {/*</Badge>*/}
                             <button type="button" className="btn btn-primary" onClick={logout}>Logout</button>
                         </div>)}
@@ -109,14 +109,14 @@ const Header = ({loggedIn, setLoggedIn, user, setUser}) => {
         //                     {!loggedIn ? (<LogIn login={login}/>) :
         //                         (<div className="login-container">
         //                             <Badge bg="primary">
-        //                                 <LoggedIn user={user}/>
+        //                                 <LoggedIn userPage={userPage}/>
         //                             </Badge>
         //                             <button onClick={logout}>Logout</button>
         //                         </div>)}
         //
         //                     {/*{!loggedIn ? (<LogIn login={login} />) :*/}
         //                     {/*    (<div>*/}
-        //                     {/*        <LoggedIn user={user} />*/}
+        //                     {/*        <LoggedIn userPage={userPage} />*/}
         //                     {/*        <button onClick={logout}>Logout</button>*/}
         //                     {/*    </div>)}*/}
         //

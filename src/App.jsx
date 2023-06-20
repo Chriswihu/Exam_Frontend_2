@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, Component} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LogIn from "./components/loginform/LoginForm.jsx";
 import LoggedIn from "./components/loggedin/LoggedIn.jsx";
@@ -12,8 +12,9 @@ import Contact from "./components/contact/Contact.jsx";
 import Registration from "./components/registration/registration";
 import Bookshelf from "./components/bookshelf/Bookshelf.jsx";
 import Table_Example from "./components/Page_Example/Table_Example.jsx";
-import User from "./components/user/User.jsx";
+import UserPage from "./components/userPage/UserPage.jsx";
 import Events from "./components/event/Events.jsx";
+import Admin from "./components/admin/Admin.jsx";
 
 
 function App() {
@@ -38,9 +39,9 @@ function App() {
                     <Route path="/about" element={<About/>}/>
                     <Route path="/contact" element={<Contact/>}/>
                     <Route path="/events" element={<Events/>}/>
-                    <Route path="/user" element={<User/>}/>
+                    <Route path="/user" element={<UserPage/>}/>
                     <Route path="/admin" element={<Admin/>}/>
-                    {/*<Route path="/table_example" element={<Table_Example/>}/>*/}
+                    <Route path="/library" element={<Library/>}/>
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/login"
                            element={<LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user}

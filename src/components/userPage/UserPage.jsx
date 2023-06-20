@@ -4,24 +4,41 @@ import Table from "react-bootstrap/Table";
 import facade from "../../apiFacade.js";
 import * as userData from "react-bootstrap/ElementChildren";
 
-function User({user}) {
+function UserPage({user}) {
 
     const [userData, setUserData] = useState([]);
+    // const [user, setUser] = useState("");
 
-    const fetchUserAssignments = (user) => {
-        facade.fetchUserAssignments(user).then((res) => {
-            setUserData(res);
-        })
+    useEffect(() => {
+        user=(facade.readJwtToken(facade.getToken()).username);
+
+    }, []);
+
+
+    useEffect(() => {
+        if (user !== "") {
+            fetchAssignments(user);
+
+        }
+    }, []);
+
+
+    const fetchAssignments = (user) => {
+        facade.fetchUserAssignments(user)
+            .then((res) => {
+                setUserData(res);
+            })
             .catch((err) => {
-                console.log("Error fetching Assignments" + err);
-            }
-        );
-    }
-
+                console.log("Error fetching assignments", err);
+            });
+    };
 
 
     return (
         <div>
+            <br></br>
+            <h1>Events fetched from Database</h1>
+            <h3>Hello, {facade.readJwtToken(facade.getToken()).username}</h3>
             {userData.map((item) => {
                     return (
                         <div>
@@ -52,4 +69,4 @@ function User({user}) {
 
 }
 
-export default User;
+export default UserPage;

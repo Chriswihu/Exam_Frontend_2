@@ -59,7 +59,7 @@ const Table_Example = () => {
                                 <td>{item.description}</td>
                                 <td>
                                     {/*TODO tilføj action til knap*/}
-                                    {/* der skal nok tilføjes en user hertil */}
+                                    {/* der skal nok tilføjes en userPage hertil */}
                                     <Button
                                         //onClick={() => addBook(item.volumeInfo.title, item.volumeInfo.authors, item.volumeInfo.description)}
                                         className="btn btn-danger">
@@ -67,7 +67,7 @@ const Table_Example = () => {
                                     </Button>
                                 </td>
                                 <td>
-                                    {/* der skal nok tilføjes en user hertil */}
+                                    {/* der skal nok tilføjes en userPage hertil */}
                                     <Button
                                         //onClick={() => addReview(review_text, )}
                                         className="btn btn-primary">
