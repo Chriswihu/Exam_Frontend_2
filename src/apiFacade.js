@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/dat3_exam";
+const URL = "http://localhost:8080/dat3_exam_2";
 
 // Denne streng burde nok gemmes væk
 const GoogleURL = "https://www.googleapis.com/books/v1/volumes?q=:keyes&key=AIzaSyCZoXruFbr28UKR2Z6HXgtXqnpRA0shUTk"
@@ -27,9 +27,9 @@ function apiFacade() {
         const options = makeOptions("GET", true); //True add's the token
         return fetch(URL + ressource, options).then(handleHttpErrors);
     }
-    const fetchEvents = (ressource) => {
+    const fetchMovies = (ressource) => {
         const options = makeOptions("GET", true); //True add's the token
-        return fetch(URL + "/api/event/all", options).then(handleHttpErrors);
+        return fetch(URL + "/api/movie/all", options).then(handleHttpErrors);
     }
 
     const fetchUser = (user_name) => {
@@ -38,7 +38,7 @@ function apiFacade() {
         return fetch(URL + "/api/user/" + user_name, options).then(handleHttpErrors);
     }
 
-    const fetchUserAssignments = (username) => {
+    const fetchUserMovies = (username) => {
         const options = makeOptions("GET");
         // console.log(URL + "/api/userPage/" + username);
         return fetch(URL + "/api/user/" + username, options).then(handleHttpErrors).then((res) => res);
@@ -54,7 +54,7 @@ function apiFacade() {
         return fetch(GoogleURL, options).then(handleHttpErrors);
     }
 
-    const addEvent = (event) => {
+    const addMovie = (event) => {
         const options = {
             method: "POST",
             headers: {
@@ -63,7 +63,7 @@ function apiFacade() {
             },
             body: JSON.stringify(event)
         };
-        return fetch(URL + "/api/event", options).then(handleHttpErrors);
+        return fetch(URL + "/api/movie", options).then(handleHttpErrors);
     }
 
     const updateEvent = (event) => {
@@ -88,6 +88,41 @@ function apiFacade() {
         };
         return fetch(URL + "/api/event/" + id, options).then(handleHttpErrors);
     }
+
+    const createFestival = async (festival) => {
+        try {
+            const res = await fetch(URL + "/api/festival", makeOptions("POST", true, festival));
+            const data = await res.json();
+            return data;
+            // if (!data.ok) {
+            //     throw new Error("Failed to create festival");
+            // }
+        } catch (err) {
+            console.log("Error while Creating Festival", err);
+        }
+    };
+
+    const createMovie = async (movie) => {
+        try {
+            const res = await fetch(URL + "/api/movie", makeOptions("POST", true, movie));
+            const data = await res.json();
+            return data;
+
+        } catch (err) {
+            console.log("Error while Creating Movie", err);
+        }
+    };
+
+    const createUser = async (user) => {
+        try {
+            const res = await fetch(URL + "/api/user", makeOptions("POST", true, user));
+            const data = await res.json();
+            return data;
+
+        } catch (err) {
+            console.log("Error while Creating User", err);
+        }
+    };
 
     const makeOptions = (method, addToken, body) => {
         var opts = {
@@ -160,11 +195,14 @@ function apiFacade() {
         logout,
         fetchData,
         readJwtToken,
-        fetchEvents,
-        fetchUserAssignments,
+        fetchMovies,
+        fetchUserMovies,
         fetchUser,
+        createFestival,
+        createMovie,
+        createUser,
         fetchDataGoogle,
-        addEvent,
+        addMovie,
         updateEvent,
         deleteEvent
 

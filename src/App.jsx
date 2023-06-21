@@ -1,7 +1,6 @@
 import React, {useState, useEffect, Component} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LogIn from "./components/loginform/LoginForm.jsx";
-import LoggedIn from "./components/loggedin/LoggedIn.jsx";
 import Home from "./components/home/Home.jsx";
 import Header from "./components/header/Header.jsx";
 import About from "./components/about/About.jsx";
@@ -10,11 +9,10 @@ import apiFacade from "./apiFacade";
 import Library from "./components/library/Library.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import Registration from "./components/registration/registration";
-import Bookshelf from "./components/bookshelf/Bookshelf.jsx";
-import Table_Example from "./components/Page_Example/Table_Example.jsx";
 import UserPage from "./components/userPage/UserPage.jsx";
-import Events from "./components/event/Events.jsx";
 import Admin from "./components/admin/Admin.jsx";
+import Movies from "./components/movies/Movies.jsx";
+import Festivals from "./components/festival/Festival.jsx";
 
 
 function App() {
@@ -38,7 +36,8 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/contact" element={<Contact/>}/>
-                    <Route path="/events" element={<Events/>}/>
+                    <Route path="/movies" element={<Movies/>}/>
+                    <Route path="/festivals" element={<Festivals/>}/>
                     <Route path="/user" element={<UserPage/>}/>
                     <Route path="/admin" element={<Admin/>}/>
                     <Route path="/library" element={<Library/>}/>

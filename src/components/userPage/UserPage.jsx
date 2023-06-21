@@ -24,7 +24,7 @@ function UserPage({user}) {
 
 
     const fetchAssignments = (user) => {
-        facade.fetchUserAssignments(user)
+        facade.fetchUserMovies(user)
             .then((res) => {
                 setUserData(res);
             })
@@ -45,18 +45,30 @@ function UserPage({user}) {
                             <Table className="table table-info" bordered hover>
                                 <thead>
                                 <tr>
-                                    <th style={{width: "20%"}}>Event Dish</th>
-                                    <th style={{width: "20%"}}>Event Location</th>
-                                    <th style={{width: "20%"}}>Event Time</th>
-                                    <th style={{width: "20%"}}>Event Price</th>
+                                    <th style={{width: "15%"}}>Name</th>
+                                    <th style={{width: "15%"}}>Duration</th>
+                                    <th style={{width: "15%"}}>Location</th>
+                                    <th style={{width: "15%"}}>StartDate</th>
+                                    <th style={{width: "15%"}}>StartTime</th>
+                                    <th style={{width: "15%"}}>Delete Tickets</th>
                                 </tr>
                                 </thead>
                                 <tbody key={item.dish}>
                                 <tr>
-                                    <td>{item.dish}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.duration}</td>
                                     <td>{item.location}</td>
-                                    <td>{item.time}</td>
-                                    <td>{item.price}</td>
+                                    <td>{item.startDate}</td>
+                                    <td>{item.startTime}</td>
+                                    <td>
+                                        <Button
+                                            className={"btn btn-danger"}
+                                            // onClick={() => {
+                                                // facade.deleteMovie(item.id);}}
+                                            >
+                                            Delete Ticket
+                                        </Button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </Table>

@@ -57,7 +57,9 @@ const Header = ({loggedIn, setLoggedIn, user, setUser}) => {
                     && <a className="nav-item nav-link" href="/registration">Sign-up</a>}
 
                 {facade.loggedIn()
-                    && <a className="nav-item nav-link" href="/events">Events</a>}
+                    && <a className="nav-item nav-link" href="/movies">Movies</a>}
+                {facade.loggedIn()
+                    && <a className="nav-item nav-link" href="/festivals">Festivals</a>}
 
                 {facade.loggedIn() 
                     && <a className="nav-item nav-link" href="/user">User</a>}
