@@ -13,6 +13,7 @@ import UserPage from "./components/userPage/UserPage.jsx";
 import Admin from "./components/admin/Admin.jsx";
 import Movies from "./components/movies/Movies.jsx";
 import Festivals from "./components/festival/Festival.jsx";
+import AdminCreate from "./components/admin/AdminCreate.jsx";
 
 
 function App() {
@@ -40,7 +41,11 @@ function App() {
                     <Route path="/festivals" element={<Festivals/>}/>
                     <Route path="/user" element={<UserPage/>}/>
                     <Route path="/admin" element={<Admin/>}/>
-                    <Route path="/library" element={<Library/>}/>
+                    <Route path="/admin/create" element={<AdminCreate/>}/>
+                    {/*<Route path="/admin/movies" element={<AdminMovies/>}/>*/}
+                    {/*<Route path="/admin/festivals" element={<AdminFestivals/>}/>*/}
+                    {/*<Route path="/admin/users" element={<AdminUser/>}/>*/}
+                    {/*<Route path="/library" element={<Library/>}/>*/}
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/login"
                            element={<LogIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} user={user}

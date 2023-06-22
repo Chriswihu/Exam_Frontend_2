@@ -50,7 +50,7 @@ function UserPage({user}) {
                                     <th style={{width: "15%"}}>Location</th>
                                     <th style={{width: "15%"}}>StartDate</th>
                                     <th style={{width: "15%"}}>StartTime</th>
-                                    <th style={{width: "15%"}}>Delete Tickets</th>
+                                    <th style={{width: "15%"}}>Remove Ticket</th>
                                 </tr>
                                 </thead>
                                 <tbody key={item.dish}>
@@ -63,10 +63,10 @@ function UserPage({user}) {
                                     <td>
                                         <Button
                                             className={"btn btn-danger"}
-                                            // onClick={() => {
-                                                // facade.deleteMovie(item.id);}}
+                                            onClick={() => {
+                                                facade.removeMovieFromUser(item.id);}}
                                             >
-                                            Delete Ticket
+                                            Remove Ticket
                                         </Button>
                                     </td>
                                 </tr>

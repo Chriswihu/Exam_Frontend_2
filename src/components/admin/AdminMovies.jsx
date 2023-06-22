@@ -10,17 +10,6 @@ const Movies = () => {
     const [tableData, setTableData] = useState([]);
     // const isAdmin = facade.loggedIn() && facade.readJwtToken().roles.includes("admin");
 
-    const [userMovies, setUserMovie] = useState([]);
-
-    useEffect(() => {
-        facade.fetchUserMovies().then((res) => {
-            if (res) {
-                setUserMovie(res);
-                // console.log(res);
-            }
-        });
-    }, []);
-
     useEffect(() => {
         facade.fetchMovies().then((res) => {
             if (res) {
@@ -49,9 +38,9 @@ const Movies = () => {
                             <th style={{width: "15%"}}>Date</th>
                             <th style={{width: "15%"}}>Time</th>
                             <th style={{width: "15%"}}>Buy Ticket</th>
-                            {/*<th style={{width: "15%"}}>*/}
-                            {/*    Delete Movie*/}
-                            {/*</th>*/}
+                            <th style={{width: "15%"}}>
+                                Delete Movie
+                            </th>
 
 
                         </tr>
@@ -67,23 +56,24 @@ const Movies = () => {
                             <td>
                                 <Button
                                     className={"btn btn-success"}
-                                    onClick={() => {
-                                        facade.addMovieToUser(item.id);}}>
+                                    // onClick={() => {
+                                    //     facade.addMovie(item.id);}}
+                                >
                                     Buy Ticket
                                 </Button>
                             </td>
-                            {/*<td>*/}
-                            {/*    /!*{facade.loggedIn() && facade.readJwtToken().roles.includes("admin") &&*!/*/}
-                            {/*    <Button*/}
-                            {/*        className={"btn btn-danger"}*/}
-                            {/*        onClick={() => {*/}
-                            {/*            facade.deleteMovie(item.id).then(r => console.log(r));*/}
-                            {/*        }*/}
-                            {/*        }>*/}
-                            {/*        Delete Movie*/}
-                            {/*    </Button>*/}
-                            {/*    /!*}*!/*/}
-                            {/*</td>*/}
+                            <td>
+                                {/*{facade.loggedIn() && facade.readJwtToken().roles.includes("admin") &&*/}
+                                <Button
+                                    className={"btn btn-danger"}
+                                    onClick={() => {
+                                        facade.deleteMovie(item.id).then(r => console.log(r));
+                                    }
+                                    }>
+                                    Delete Movie
+                                </Button>
+                                {/*}*/}
+                            </td>
                         </tr>
                         </tbody>
                     </Table>

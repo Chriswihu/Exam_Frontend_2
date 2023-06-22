@@ -23,9 +23,9 @@ function apiFacade() {
             })
     }
 
-    const fetchData = (ressource) => {
+    const fetchFestivals = (ressource) => {
         const options = makeOptions("GET", true); //True add's the token
-        return fetch(URL + ressource, options).then(handleHttpErrors);
+        return fetch(URL + "/api/festival/all", options).then(handleHttpErrors);
     }
     const fetchMovies = (ressource) => {
         const options = makeOptions("GET", true); //True add's the token
@@ -54,7 +54,7 @@ function apiFacade() {
         return fetch(GoogleURL, options).then(handleHttpErrors);
     }
 
-    const addMovie = (event) => {
+    const addMovieToUser = (event) => {
         const options = {
             method: "POST",
             headers: {
@@ -78,15 +78,9 @@ function apiFacade() {
         return fetch(URL + "/api/event/" + event.id, options).then(handleHttpErrors);
     }
 
-    const deleteEvent = (id) => {
-        const options = {
-            method: "DELETE",
-            headers: {
-                Accept: "application/json",
-                "Content-type": "application/json",
-            }
-        };
-        return fetch(URL + "/api/event/" + id, options).then(handleHttpErrors);
+    const deleteMovie = (id) => {
+        const options = makeOptions("DELETE", true);
+        return fetch(URL + "/api/movie/" + id, options).then(handleHttpErrors);
     }
 
     const createFestival = async (festival) => {
@@ -193,7 +187,7 @@ function apiFacade() {
         loggedIn,
         login,
         logout,
-        fetchData,
+        fetchFestivals,
         readJwtToken,
         fetchMovies,
         fetchUserMovies,
@@ -202,9 +196,9 @@ function apiFacade() {
         createMovie,
         createUser,
         fetchDataGoogle,
-        addMovie,
+        addMovieToUser,
         updateEvent,
-        deleteEvent
+        deleteMovie
 
 
     }
